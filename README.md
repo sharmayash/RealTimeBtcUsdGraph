@@ -1,3 +1,5 @@
+# USES Cryptonator api which updates every 30 sec to show realtime chart of BTC-USD .
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
