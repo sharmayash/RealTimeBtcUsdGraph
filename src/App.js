@@ -84,8 +84,8 @@ function App() {
         </Typography>
       </Paper>
       <Typography variant="caption">
-        Please Wait for 30 sec for getting second updated point as cryptonator
-        api updates every 30 sec
+        Please Wait for 1 min for getting second updated point as cryptonator
+        api updates every 1 min.
       </Typography>
     </div>
   )
