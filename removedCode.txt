@@ -1,0 +1,49 @@
+
+// const publicKey = "NDMxMWM2OTFiODEzNGI3MmI5YWRiOGI4YTgxMzE0ODc"
+// const secretKey =
+//   "MzRiOGM0YmQzM2YyNGZmNzlhNzA2OGEyMjAxMGJmNGZkZjQ3MDIwMWExOTA0NTA4ODhmZjZmOGY4ZDdkMjk3OA"
+  const [ticket, setTicket] = useState("")
+  const [wsURL, setWsURL] = useState(``)
+  const [ws, setWS] = useState(null)
+
+  // Get ticket
+  useEffect(() => {
+    axios
+      .get(
+        `https://cors-anywhere.herokuapp.com/https://apiv2.bitcoinaverage.com/websocket/v2/get_ticket`,
+        {
+          headers: {
+            "x-ba-key": publicKey,
+          },
+        }
+      )
+      .then((res) => {
+        setTicket(res.data.ticket)
+      })
+      .catch((err) => console.log(err))
+  }, [])
+
+  // set websocket url
+  useEffect(() => {
+    if (ticket.length > 0) {
+      setWsURL(
+        `wss://apiv2.bitcoinaverage.com/websocket/v2/ticker?ticket=${ticket}&public_key=${publicKey}`
+      )
+    }
+  }, [ticket])
+
+  useEffect(() => {
+    if (wsURL.length > 0) {
+      setWS(new WebSocket(wsURL))
+    }
+  }, [wsURL])
+
+  useEffect(() => {
+    if (ws) {
+      ws.onopen = () => console.log("connected")
+      ws.onmessage = (evt) => {
+        console.log(evt.data) // INVALID FRAME HEADERS ERROR
+      }
+      ws.onclose = () => console.log("closed")
+    }
+  }, [ws])
