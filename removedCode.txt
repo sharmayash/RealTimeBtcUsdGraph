@@ -1,7 +1,6 @@
 
-// const publicKey = "NDMxMWM2OTFiODEzNGI3MmI5YWRiOGI4YTgxMzE0ODc"
-// const secretKey =
-//   "MzRiOGM0YmQzM2YyNGZmNzlhNzA2OGEyMjAxMGJmNGZkZjQ3MDIwMWExOTA0NTA4ODhmZjZmOGY4ZDdkMjk3OA"
+// const publicKey = ""
+// const secretKey = ""
   const [ticket, setTicket] = useState("")
   const [wsURL, setWsURL] = useState(``)
   const [ws, setWS] = useState(null)
